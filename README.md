@@ -2,7 +2,7 @@
 This is a Flask based Web Application that allows people to communicate with others in their neighborhood. That is, people are able to sign up for the service and specify where they live; they can then send and receive messages to other users living close by, and participate in discussions with those users. This application is inspired by Nextdoor. The following are the functionalities supported by this application.
 
 ## Features
-Functional Requirements
+
 1. User Registration and Authentication: Allow new users to register and existing
 users to log in. Registration may involve specifying home addresses.
 2. Profile Management: Users should be able to create and edit their profiles.
