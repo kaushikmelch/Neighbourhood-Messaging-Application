@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with JohnDoe landing page.">
+    <meta name="author" content="Devcrud">
+    
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+ 
+	<link rel="stylesheet" href="/static/css/johndoe.css">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    <a href="components.html" class="btn btn-primary btn-component" data-spy="affix" data-offset-top="600"><i class="ti-shift-left-alt"></i> Components</a>
+    <header class="header">
+        <div class="container">
+            
+            <div class="header-content">
+                <h4 class="header-subtitle" ></h4>
+                <h1 class="header-title">{{firstname}}  {{lastname}}</h1>
+               
+            </div>
+        </div>
+    </header>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white" data-spy="affix" data-offset-top="510">
+        <div class="container">
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse mt-sm-20 navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/timeline" class="nav-link">Time Line</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Friends</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav brand">
+                    <img src="static/imgs/userAvatar.jpg" alt="" class="brand-img">
+                    <li class="brand-txt">
+                        <h5 class="brand-title">John Doe</h5>
+                        <div class="brand-subtitle">Web Designer | Developer</div>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/editAccountSettings" class="nav-link">Account Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link">Log Out</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <div class="userupdate-container">
+        <form id="editAccountSettings"  method="POST" >
+            <div class="container">
+                <h2 class="mb-5 pb-4"><span class="text-danger">Edit Basic Information</span> </h2> 
+
+            <label for="street">Street:</label>
+            <input type="text" placeholder="Street" id="streetaddress" name="streetaddress" required>
+            <Br>
+            <br>
+            <label for="city">City:</label>
+            <input type="text" placeholder="City" id="city" name="city" required>
+            <br>
+            <br>
+            <label for="state">State:</label>
+            <input type="text" placeholder="State" id="state" name="state" required>
+            <BR>
+            <br>
+            <label for="zipcode">Zipcode:</label>
+            <input type="text" placeholder="Zipcode" id="zipcode" name="zipcode" required>
+            <BR>
+            <br>
+           
+            <label for="photo">Update Photo:</label>
+            <input type="text" placeholder="Photo url" id="UpdatePhoto" name="photo" required>
+            <br>
+            <br>
+            <div class="form-group">
+                <label class="control-label" for="profiletext">Profile Text</label><i class="mtrl-select"></i>
+                <br>
+                <textarea rows="3" id="profiletext" name="profiletext" required="required"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="familydetails">Family Details</label><i class="mtrl-select"></i>
+                <br>
+                <textarea rows="3" id="familydetails" name="familydetails" required="required"></textarea>
+            </div>
+
+            <div class="submit-btns">
+                <button type="submit" class="mtr-btn"><span>Update</span></button>
+                <button type="submit" class="mtr-btn"><span>Cancel</span></button>
+         
+            </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+            <br><br>
+            
+        </form>
+    </div>
+</div>
+      </div>
+    
+      
+      
+            
+        
+    
+
+    <!--reset Section-->
+    
+   
+    
+    </section>
+
+               
+            </div>
+
+        </div>
+    </div>
+    <footer class="footer py-3">
+        
+    </footer>
+
+</body>
+</html>

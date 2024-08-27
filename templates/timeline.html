@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with JohnDoe landing page.">
+    <meta name="author" content="Devcrud">
+
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+
+    <link rel="stylesheet" href="/static/css/johndoe.css">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    <a href="components.html" class="btn btn-primary btn-component" data-spy="affix" data-offset-top="600"><i
+            class="ti-shift-left-alt"></i> Components</a>
+            <header class="header">
+                <div class="container">
+                    
+                    <div class="header-content">
+                        <h4 class="header-subtitle" ></h4>
+                        <h5 class="header-title">{{firstname}}  {{lastname}}</h5>
+                        <h6 class="header-mono" >Last Online: {{lastlogin}}</h6>
+                    </div>
+                </div>
+            </header>
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white" data-spy="affix" data-offset-top="510">
+        <div class="container">
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse mt-sm-20 navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/timeline" class="nav-link">Time Line</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Friends</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav brand">
+                    <img src="static/imgs/userAvatar.jpg" alt="" class="brand-img">
+                    <li class="brand-txt">
+                        
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/editAccountSettings" class="nav-link">Account Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <section>
+        <div class="container-fluid">
+            <div id="messages" class="row about-section">
+                <div class="col-lg-4 about-card">
+                    <div class="gap gray-bg">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="row" id="page-contents">
+                                        <div class="col-lg-12">
+                                            <aside class="sidebar static">
+                                                <div class="widget">
+                                                    <h4 class="widget-title">Threads Shortcuts</h4>
+                                                    <ul class="naves">
+                                                        <li>
+                                                            <i class="ti-clipboard"></i>
+                                                            <a href="?message_filter=block" title="">Block feeds</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="ti-mouse-alt"></i>
+                                                            <a href="?message_filter=hood" title="">Hood feeds</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="ti-files"></i>
+                                                            <a href="?message_filter=friend" title="">Friend Feeds</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="ti-files"></i>
+                                                            <a href="?message_filter=neighbor" title="">Neighbor Feeds</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="ti-bell"></i>
+                                                            <a href="?recent=true" title="">New messages</a>
+                                                        </li>
+                                                        <li>
+                                                            <i class="ti-comments-smiley"></i>
+                                                            <a href="/timelinetest" title="">New Block/Hood Joiners</a>
+                                                        </li>
+                                                        <div class="follow-block-form-container">
+                                                            <h2>Follow Block</h2>
+                                                            <form id="followBlockForm" action="/follow/block" method="POST">
+                                                                <li>
+                                                                    <i class="ti-plus"></i>
+                                                                    <input type="text" id="blockName" name="block_name" placeholder="Enter block name...">
+                                                                    <button type="submit" class="btn btn-primary">Follow</button>
+                                                                </li>
+                                                            </form>
+                                                        </div>
+                                                        <div class="follow-neighbor-form-container">
+                                                            <h2>Follow Neighbor</h2>
+                                                            <form id="followNeighborForm" action="/follow/neighbor" method="POST">
+                                                                <li>
+                                                                    <label for="firstName">First Name:</label>
+                                                                    <input type="text" id="firstName" name="first_name" placeholder="Enter first name...">
+                                                                </li>
+                                                                <li>
+                                                                    <label for="lastName">Last Name:</label>
+                                                                    <input type="text" id="lastName" name="last_name" placeholder="Enter last name...">
+                                                                    </li>
+                                                                    <li>
+                                                                        <button type="submit" class="btn btn-primary">Follow</button>
+                                                                    </li>
+                                                            </form>
+                                                        </div>
+                                                        <div class="fmembership-form-container">
+                                                            <h2>Request Block Membership</h2>
+                                                            <form id="blockMembership" action="/requestmembership" method="POST">
+                                                                <li>
+                                                                    <i class="ti-plus"></i>
+                                                                    <input type="text" id="blockName" name="block_name" placeholder="Enter block name...">
+                                                                    <button type="submit" class="btn btn-primary">Request</button>
+                                                                </li>
+                                                            </form>
+                                                        </div>                                                                                                                        
+                                                    </ul>
+                                                </div>
+                                            </aside>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="col-lg-4 about-card">
+                    <h3 class="font-weight-light">Messages</h3>
+                    <span class="line mb-5"></span>
+                    <div class="row" id="Feed">
+                        <div class="col-1 text-danger pt-1"><i class="ti-widget icon-lg"></i></div>
+                        <div class="col-10 ml-auto mr-3">
+                            <h6 id="feed-section-header">Message Feed</h6>
+                            <p id="feed-section-body" ></p>
+                            <div class="container">
+                               
+                                {% if visibility_groups %}
+                                    {% for visibility, threads in visibility_groups.items() %}
+                            
+                                        {% if threads %}
+                                            {% for thread_id, thread in threads.items() %}
+                                                <div class="thread">
+                                                    <h3>{{ thread.subject }}</h3>
+                                                    <h6>#{{ visibility }} Feed</h6>
+                                                    {% if thread.messages %}
+                                                        {% for message in thread.messages %}
+                                                            <div class="message">
+                                                                <p>{{ message.title }}: {{ message.text }}</p>
+                                                                <p>From: {{ message.author }} on {{ message.timestamp }}</p>
+                                                            </div>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <p>No messages in this thread.</p>
+                                                    {% endif %}
+                                                </div>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p>No threads in this category.</p>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    <p>No messages to display.</p>
+                                {% endif %}
+                            </div>
+                         
+                        </div>
+                    </div>
+
+                    <form id="searchForm" action = "/search/messages" method="POST">
+                        <h4>Search Messages</h4>
+                        <input type="text" id="keyword" name="keyword" placeholder="Enter keyword...">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+
+                    <!-- Search Results -->
+                    <div id="searchResults">
+                        {% for result in search_results %}
+                            <p><strong>Title:</strong> {{ result.title }}</p>
+                            <p><strong>Text:</strong> {{ result.text }}</p>
+                            <p><strong>Author:</strong> {{ result.author_firstname }} {{ result.author_lastname }}</p>
+                            <p><strong>Timestamp:</strong> {{ result.timestamp }}</p>
+                            <hr>
+                        {% endfor %}
+                    </div>
+
+                    <form method="post">
+                        <h4>Start or reply to a thread</h4>
+                        <!-- Existing or New Thread Selection -->
+                        <label for="thread_choice">Choose a thread or start a new one:</label>
+                        <select name="thread_id" id="thread_choice" style="width: 100%; padding: 10px; margin-bottom: 15px; box-sizing: border-box;">
+                            <option value="0">Start a New Thread</option>
+                            {% for thread in existing_threads %}
+                                <option value="{{ thread[0] }}">{{ thread[1] or 'No Subject Available' }}</option>
+                            {% endfor %}
+                        </select>
+                        <br><br>
+                        <!-- Subject for New Thread -->
+                        <label for="subject">Subject (for new threads):</label>
+                        <input type="text" id="subject" name="subject" placeholder="Enter subject for new thread" style="width: 100%; padding: 10px; margin-bottom: 15px; box-sizing: border-box;" />
+                        <br><br>
+
+                        <!-- Title for Message -->
+                        <label for="title">Message Title:</label>
+                        <input type="text" id="title" name="title" placeholder="Title of your message" required style="width: 100%; padding: 10px; margin-bottom: 15px; box-sizing: border-box;" />
+                        <br><br>
+
+                        <!-- Message Text -->
+                        <label for="message_text">Message:</label>
+                        <textarea id="message_text" name="message_text" placeholder="Write your message here..." required style="width: 100%; padding: 10px; margin-bottom: 15px; box-sizing: border-box; height: 100px;"></textarea>
+                        <br><br>
+
+                        <!-- Visibility Type -->
+                        <label for="visibility_type">Feed:</label>
+                        <select name="visibility_type" id="visibility_type" style="width: 100%; padding: 10px; margin-bottom: 15px; box-sizing: border-box;">
+                            <option value="Block" {% if request.form.visibility_type == 'Block' %}selected{% endif %}>Block</option>
+                            <option value="Hood" {% if request.form.visibility_type == 'Hood' %}selected{% endif %}>Hood</option>
+                            <option value="DM" {% if request.form.visibility_type == 'DM' %}selected{% endif %}>Direct Message</option>
+                        </select>
+                        <br><br>
+
+                        <!-- Recipient for Direct Message -->
+                        <!-- {% if request.form.visibility_type == 'DM' %}
+                            <div id="dm_recipient">
+                                <label for="recipient_id">Select User for DM:</label>
+                                <select name="recipient_id" id="recipient_id" style="width: 100%; padding: 10px; margin-bottom: 15px; box-sizing: border-box;">
+                                    {% for user in all_users %}
+                                        <option value="{{ user[0] }}">{{ user[1] }} {{ user[2] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        {% endif %} -->
+
+                        <!-- Recipient for Direct Message -->
+                        <div id="dm_recipient">
+                            <label for="recipient_id">Select User for DM:</label>
+                            <select name="recipient_id" id="recipient_id" style="width: 100%; padding: 10px; margin-bottom: 15px; box-sizing: border-box;">
+                                {% for user in all_users %}
+                                    <option value="{{ user[0] }}">{{ user[1] }} {{ user[2] }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <br>
+
+
+                        
+                        <br>
+
+                        <button type="submit" class="btn btn-success" style="padding: 10px 20px;">Post Message</button>
+                    </form>
+
+
+                    <BR>
+                    <!-- Other messages sections -->
+                </div>
+                <div class="col-lg-4 about-card">
+                    <h3 class="font-weight-light">Friends</h3>
+                    <span class="line mb-5"></span>
+                    <h6>New Members in Your Block/Hood since you were last online</h6>
+        {% if new_members %}
+            <ul>
+                {% for member in new_members %}
+                    <li>{{ member[0] }} {{ member[1] }} - Joined: {{ member[3].strftime('%Y-%m-%d') }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No new members to display.</p>
+        {% endif %}
+                    <!-- Friends content -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+
+
+    <!--reset Section-->
+
+
+
+    </section>
+
+
+    </div>
+
+    </div>
+    </div>
+    <footer class="footer py-3">
+
+    </footer>
+    
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Font Icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <!-- Bootstrap and Main Styles -->
+    <link rel="stylesheet" href="/static/css/johndoe.css">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    <!-- Component Button -->
+    <a href="components.html" class="btn btn-primary btn-component" data-spy="affix" data-offset-top="600">
+        <i class="ti-shift-left-alt"></i> Components
+    </a>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h4 class="header-subtitle">Hello,</h4>
+                <h1 class="header-title">{{ firstname }} {{ lastname }}</h1>
+                <h6 class="header-mono">Last Online: {{ lastLogin }}</h6>
+            </div>
+        </div>
+    </header>
+
+   
+ 
+    <!-- Navigation Bar -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="navbar-nav brand">
+                <img src="static/imgs/userAvatar.jpg" alt="" class="brand-img">
+               
+            </ul>
+           
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="/homepage" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/timeline" class="nav-link">Timeline</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Friends</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/editAccountSettings" class="nav-link">Account Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <!-- Main Content Section -->
+    <div class="container-fluid">
+        <div class="row about-section">
+            <div class="col-lg-4 about-card">
+                <h3 class="font-weight-light">About Me</h3>
+                <span class="line mb-5"></span>
+                <h5 class="mb-3">{{ Profiletext }}</h5>
+                <br>
+                <h5>Family Details</h5>
+                <h6 class="mb-3">{{ familydetails }}</h6>
+            </div>
+            <div class="col-lg-4 about-card">
+                <h3 class="font-weight-light">Personal Info</h3>
+                <span class="line mb-5"></span>
+                <ul class="info list-unstyled">
+                    <li><span>Email:</span> {{ email }}</li>
+                    <li><span>Address:</span> {{ street }}, {{ city }}, {{ state }} {{ zip }}</li>
+                </ul>
+            </div>
+            <div class="col-lg-4 about-card">
+                <h3 class="font-weight-light">My Friends</h3>
+                <span class="line mb-5"></span>
+                <div class="row">
+                    <div class="col-1 text-danger pt-1"><i class="ti-widget icon-lg"></i></div>
+                    <div class="col-10 ml-auto mr-3">
+                        <h5>Pending Friend Requests</h5>
+                            <p class="friends">
+                                {% if pendingFriends %}
+                                    {% for friend in pendingFriends %}
+                                        <div>
+                                            <p><h6>Friend Request from: {{ friend[0] }} {{ friend[1] }} - Last Online: {{ friend[2].strftime('%Y-%m-%d') }}</h6> </p>
+                                            <form action="/" method="post">
+                                                <input type="hidden" name="requester_id" value="{{ friend[3] }}">
+                                                <input type="hidden" name="receiver_id" value="{{ friend[4] }}">
+                                                <button type="submit" name="response" class="btn btn-success" value="accepted">Accept</button>
+                                                <button type="submit" name="response" class="btn btn-danger" value="not accepted">Reject</button>
+                                            </form>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>No current pending friends.</p>
+                                {% endif %}
+                            </p>
+                        <h5>Your Friends</h5>
+                        <p class="friends">
+                           
+                            {% if friends %}
+                            <ul>
+                                {% for friend in friends %}
+                                    <li>{{ friend[0] }} {{ friend[1] }}, Last Online: {{friend[2]}} </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>No friends found.</p>
+                        {% endif %}
+                        </p>
+                    </div>
+                    <form action="{{ url_for('home') }}" method="post">
+                        <h4>Send a Friend Request</h4>
+                        <label for="friend_id">Select a user to send a friend request:</label>
+                        <select name="friend_id" id="friend_id">
+                            {% for user in all_users %}
+                                {% if user[8] != user_id %}
+                                    <option value="{{ user[8] }}">{{ user[0] }} {{ user[1] }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                        <button type="submit" name="action" class="btn btn-success"value="send_request">Send Request</button>
+                    </form>
+                </div>               
+            </div>
+            <div class="col-lg-4 about-card">
+                <h3 class="font-weight-light">Block Membership Requests</h3>
+                <span class="line mb-5"></span>
+                <div class="row">
+                    <div class="col-1 text-danger pt-1"><i class="ti-widget icon-lg"></i></div>
+                    <div class="col-10 ml-auto mr-3">
+                        <h5>Pending Membership Requests</h5>
+                        <p class="membership-requests">
+                            {% if pendingMembershipRequests %}
+                                {% for request in pendingMembershipRequests %}
+                                    <div>
+                                        <p>
+                                            <h6>Membership Request from: {{ request[0] }} {{ request[1] }} - Last Online: {{ request[2].strftime('%Y-%m-%d') }}</h6>
+                                        </p>
+                                        <form action="/" method="post">
+                                            <input type="hidden" name="requestedbyid" value="{{ request[3] }}">
+                                            <input type="hidden" name="requestedforid" value="{{ request[4] }}">
+                                            <button type="submit" name="response" class="btn btn-success" value="accepted">Approve</button>
+                                            <button type="submit" name="response" class="btn btn-danger" value="not accepted">Reject</button>
+                                        </form>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p>No current pending membership requests.</p>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- Contact Info Section -->
+    
+    <footer class="footer py-3">
+        
+    </footer>
+</body>
+</html>
