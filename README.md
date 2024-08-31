@@ -27,5 +27,5 @@ for read-only access to those threads.
 ## Tech Stack
 1. Python
 2. Flask
-3. Postgres SQL
+3. PostgreSQL
 4. HTML/CSS/JavaScript
